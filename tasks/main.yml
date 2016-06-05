@@ -1,0 +1,38 @@
+---
+- name: setup
+  include_vars: "{{ ansible_user_shell | basename }}.yml"
+  tags: always
+
+#####=== install ===#####
+
+- name: install
+  git:
+    repo: "{{ enhancd_git_clone_url }}"
+    dest: "{{ enhancd_install_prefix }}"
+    clone: yes
+    update: yes
+  tags:
+    - bootstrap
+    - install
+    - update
+
+#####=== configure ===#####
+
+- name: bash/zsh | configure | shell initialization
+  blockinfile:
+    dest: "{{ enhancd_shell_config_file }}"
+    create: yes
+    backup: no
+    state: "{{ enhancd_config_state }}"
+    marker: "{{ enhancd_config_marker }}"
+    block: "{{ enhancd_config_block }}"
+  when: ansible_user_shell | match(".*\/(bash|zsh)")
+  tags:
+    - bootstrap
+    - configure
+    - config
+    
+# TODO: support fish when enhancd supports customizing these variables for fish
+# - name: fish | configure | shell initialization
+  # command: fish -c "set -Ux ENHACD_DIR {{ enhancd_dir }}; set -Ux ENHANCD_COMMAND {{ enhancd_command }}; set -Ux ENHANCD_DISABLE_DOT {{ enhancd_disable_dot }}; set -Ux ENHANCD_DISABLE_HYPHEN {{ enhancd_disable_hyphen }}"
+  # when: ansible_user_shell | match(".*\/fish")
