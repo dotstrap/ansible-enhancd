@@ -2,7 +2,7 @@ ansible-enhancd
 =========
 [![Build Status](https://travis-ci.org/dotstrap/ansible-enhancd.svg?branch=master)](https://travis-ci.org/dotstrap/ansible-enhancd)
 
-> Install & configure enhancd.
+> Install & configure [enhancd].
 
 Requirements
 ------------
@@ -49,6 +49,7 @@ Author Information
 [bash]: https://www.gnu.org/software/bash/manual/bashref.html
 [default variables]: defaults/main.yml
 [dotstrap]: https://github.com/mwilliammyers/dotstrap
+[enhancd]: https://github.com/b4b4r07/enhancd
 [fasd]: https://github.com/clvv/fasd
 [files]: files/
 [fish]: http://fishshell.com/
