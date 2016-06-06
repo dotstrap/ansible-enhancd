@@ -13,8 +13,11 @@
     update: yes
   tags:
     - bootstrap
+    - bootstrap_enhancd
     - install
+    - install_enhancd
     - update
+    - update_enhancd
 
 #####=== configure ===#####
 
@@ -29,8 +32,9 @@
   when: ansible_user_shell | match(".*\/(bash|zsh)")
   tags:
     - bootstrap
+    - bootstrap_enhancd
     - configure
-    - config
+    - configure_enhancd
     
 # TODO: support fish when enhancd supports customizing these variables for fish
 # - name: fish | configure | shell initialization
